@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nicole Malitao | Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="bg-grid">
   <main class="shell shell--tight">
     <div class="heartbar" aria-hidden="true">❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤</div>
-    <h1 class="hero">ASPIRING FULL-STACK DEVELOPER</h1>
+    <h1 class="hero">ASPIRING FULL-STACK DEVELOPER</h1> hatdog
     <p class="tagline">Welcome to my page! Feel free to look around and see the projects I’ve worked on.</p>
 
     <div class="grid">
@@ -45,8 +47,11 @@
       <!-- CENTER COLUMN -->
       <section class="centercol">
         <div class="panel textpanel">
-          <p>Welcome to my page! Feel free to look around and see the projects I’ve worked on. This is my little space for learning, exploring, and creating. What started as a small hobby slowly turned into something I’m truly passionate about.</p>
-          <p>I’m still learning every day and enjoying the adventure that comes with building things on the internet.</p>
+          <p>Welcome to my page! Feel free to look around and see the projects I’ve worked on. This is my little space
+            for learning, exploring, and creating. What started as a small hobby slowly turned into something I’m truly
+            passionate about.</p>
+          <p>I’m still learning every day and enjoying the adventure that comes with building things on the internet.
+          </p>
         </div>
 
         <!-- MP3 PLAYER (compact like your mock) -->
@@ -107,25 +112,26 @@
 
   <script>
     // tiny player plumbing (kept minimal so visuals stay 1:1)
-    const a=document.getElementById('audio'),
-          play=document.getElementById('play'),
-          mute=document.getElementById('mute'),
-          cur=document.getElementById('cur'),
-          dur=document.getElementById('dur'),
-          bar=document.querySelector('.bar'), fill=document.getElementById('fill');
+    const a = document.getElementById('audio'),
+      play = document.getElementById('play'),
+      mute = document.getElementById('mute'),
+      cur = document.getElementById('cur'),
+      dur = document.getElementById('dur'),
+      bar = document.querySelector('.bar'), fill = document.getElementById('fill');
 
-    play.onclick=()=> a.paused ? (a.play(), play.textContent='⏸') : (a.pause(), play.textContent='▶');
-    mute.onclick=()=> (a.muted=!a.muted, mute.textContent=a.muted?'🔇':'🔈');
+    play.onclick = () => a.paused ? (a.play(), play.textContent = '⏸') : (a.pause(), play.textContent = '▶');
+    mute.onclick = () => (a.muted = !a.muted, mute.textContent = a.muted ? '🔇' : '🔈');
 
-    a.addEventListener('timeupdate',()=>{
-      const p=(a.currentTime/(a.duration||1))*100; fill.style.width=p+'%';
-      cur.textContent=fmt(a.currentTime); dur.textContent=isFinite(a.duration)?fmt(a.duration):'0:00';
+    a.addEventListener('timeupdate', () => {
+      const p = (a.currentTime / (a.duration || 1)) * 100; fill.style.width = p + '%';
+      cur.textContent = fmt(a.currentTime); dur.textContent = isFinite(a.duration) ? fmt(a.duration) : '0:00';
     });
-    bar.addEventListener('click',e=>{
-      const r=bar.getBoundingClientRect(); a.currentTime=((e.clientX-r.left)/r.width)*(a.duration||0);
+    bar.addEventListener('click', e => {
+      const r = bar.getBoundingClientRect(); a.currentTime = ((e.clientX - r.left) / r.width) * (a.duration || 0);
     });
-    function fmt(s){ s=Math.floor(s||0); const m=Math.floor(s/60); return m+':'+String(s%60).padStart(2,'0'); }
-    document.getElementById('y').textContent=new Date().getFullYear();
+    function fmt(s) { s = Math.floor(s || 0); const m = Math.floor(s / 60); return m + ':' + String(s % 60).padStart(2, '0'); }
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
