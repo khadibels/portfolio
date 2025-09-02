@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome | Nicole Malitao</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-grid">
+  <main class="shell shell--tight">
+    <div class="chrome-dots">
+      <span class="dot red"></span><span class="dot cyan"></span><span class="dot orange"></span>
+    </div>
+
+    <section class="splash">
+      <p class="splash__sub">WELCOME TO MY</p>
+      <h1 class="splash__title">PORTFOLIO</h1>
+      <div class="tag">N I C O L E&nbsp;&nbsp; M A L I T A O</div>
+
+      <div class="loader"><span class="loader__bar" id="bar"></span></div>
+      <div class="loader__text">loading…</div>
+    </section>
+  </main>
+
+  <a class="skip" href="home.html">skip ▶</a>
+
+  <script>
+    const bar=document.getElementById('bar');
+    const T=3000, t0=performance.now();
+    function step(t){const p=Math.min((t-t0)/T,1);bar.style.width=(p*100)+'%'; if(p<1)requestAnimationFrame(step); else location.href='home.html';}
+    requestAnimationFrame(step);
+  </script>
+</body>
+</html>

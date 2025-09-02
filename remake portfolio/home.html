@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nicole Malitao | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-grid">
+  <main class="shell shell--tight">
+    <div class="heartbar" aria-hidden="true">❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤</div>
+    <h1 class="hero">ASPIRING FULL-STACK DEVELOPER</h1>
+    <p class="tagline">Welcome to my page! Feel free to look around and see the projects I’ve worked on.</p>
+
+    <div class="grid">
+      <!-- LEFT COLUMN -->
+      <aside class="leftcol">
+        <a class="navbtn" href="#folder">
+          <img src="assets/img/folder1-icon.png" alt=""><span>folder</span>
+        </a>
+
+        <a class="navbtn" href="#works">
+          <img src="assets/img/buton-work.png" alt=""><span>works</span>
+        </a>
+
+        <a class="navbtn" href="#education">
+          <img src="assets/img/folder2-icon.png" alt=""><span>education</span>
+        </a>
+
+        <div class="panel panel--soft">
+          <div class="quickgrid">
+            <a class="chip" href="#resume">
+              <img src="assets/img/paper-icon.png" alt=""><span>resume</span>
+            </a>
+            <a class="chip" href="https://github.com/" target="_blank">
+              <img src="assets/img/git-hub-icon.png" alt=""><span>github</span>
+            </a>
+            <a class="chip" href="mailto:nicole@example.com">
+              <img src="assets/img/email-icon.png" alt=""><span>email</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER COLUMN -->
+      <section class="centercol">
+        <div class="panel textpanel">
+          <p>Welcome to my page! Feel free to look around and see the projects I’ve worked on. This is my little space for learning, exploring, and creating. What started as a small hobby slowly turned into something I’m truly passionate about.</p>
+          <p>I’m still learning every day and enjoying the adventure that comes with building things on the internet.</p>
+        </div>
+
+        <!-- MP3 PLAYER (compact like your mock) -->
+        <div class="panel player">
+          <div class="blips" aria-hidden="true">● ● ● ●</div>
+          <div class="player__row">
+            <div class="art"><img src="assets/img/folder1-icon.png" alt=""></div>
+            <div class="trackwrap">
+              <div class="track">our song by taylor swift</div>
+              <div class="controls">
+                <button class="btn">⟨⟨</button>
+                <button class="btn" id="play">▶</button>
+                <button class="btn">⟩⟩</button>
+                <button class="btn" id="mute">🔈</button>
+              </div>
+              <div class="bar"><span id="fill"></span></div>
+              <div class="time"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+            </div>
+          </div>
+          <div class="list">
+            <div class="row"><span>our song by taylor swift</span><span>3:22</span></div>
+          </div>
+          <audio id="audio" src="assets/audio/track1.mp3" preload="metadata"></audio>
+        </div>
+
+        <div id="works" class="panel">
+          <h2 class="sect">WORKS</h2>
+          <div class="row"><span>TNVS Logistics Web App</span><a class="pill">view</a></div>
+          <div class="row"><span>Flutter To-Do App</span><a class="pill">view</a></div>
+        </div>
+
+        <div id="education" class="panel">
+          <h2 class="sect">EDUCATION</h2>
+          <div class="row"><span>BSIT – 4th Year (2025–2026)</span><span>Quezon City</span></div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="rightcol">
+        <div class="panel profile">
+          <div class="frame">
+            <img src="assets/img/profile.jpg" alt="Nicole">
+          </div>
+          <div class="bubble">what do I build next?</div>
+        </div>
+
+        <div class="socials">
+          <a href="#"><img src="assets/img/button-instagram.png" alt=""></a>
+          <a href="#"><img src="assets/img/button-tiktok.png" alt=""></a>
+          <a href="#"><img src="assets/img/button-facebook.png" alt=""></a>
+          <a href="#"><img src="assets/img/button-linked-in.png" alt=""></a>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="foot">© <span id="y"></span> Nicole Malitao</footer>
+  </main>
+
+  <script>
+    // tiny player plumbing (kept minimal so visuals stay 1:1)
+    const a=document.getElementById('audio'),
+          play=document.getElementById('play'),
+          mute=document.getElementById('mute'),
+          cur=document.getElementById('cur'),
+          dur=document.getElementById('dur'),
+          bar=document.querySelector('.bar'), fill=document.getElementById('fill');
+
+    play.onclick=()=> a.paused ? (a.play(), play.textContent='⏸') : (a.pause(), play.textContent='▶');
+    mute.onclick=()=> (a.muted=!a.muted, mute.textContent=a.muted?'🔇':'🔈');
+
+    a.addEventListener('timeupdate',()=>{
+      const p=(a.currentTime/(a.duration||1))*100; fill.style.width=p+'%';
+      cur.textContent=fmt(a.currentTime); dur.textContent=isFinite(a.duration)?fmt(a.duration):'0:00';
+    });
+    bar.addEventListener('click',e=>{
+      const r=bar.getBoundingClientRect(); a.currentTime=((e.clientX-r.left)/r.width)*(a.duration||0);
+    });
+    function fmt(s){ s=Math.floor(s||0); const m=Math.floor(s/60); return m+':'+String(s%60).padStart(2,'0'); }
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
